@@ -110,7 +110,7 @@ const FRAME_ANGLES: Record<FrameAnchor, number> = {
 export function getFrameState(anchor: FrameAnchor): FrameState {
   const rotation = FRAME_ANGLES[anchor];
   const asset = anchor === 'right' || anchor === 'left' ? 'horizontal' : 'vertical';
-  const aspect = asset === 'horizontal' ? 1504 / 291 : 1213 / 459;
+  const aspect = asset === 'horizontal' ? 1 / CAPTURE_ASPECT : CAPTURE_ASPECT;
   // Side placement and side rotation are independent: the PNG's opaque base
   // must face the selected edge while its rotated bounding box stays anchored.
   const layoutAngle = anchor === 'left' ? 270 : anchor === 'right' ? 90 : rotation;
