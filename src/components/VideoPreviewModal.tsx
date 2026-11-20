@@ -45,7 +45,7 @@ export const VideoPreviewModal: React.FC<VideoPreviewProps> = ({
         await navigator.share({
           files: [file],
           title: video.filename,
-          text: 'Video oficial de Sunrise 3.0',
+          text: 'Video oficial Campeonato de Fútbol 2026 - Campeonato GCF',
         });
         setSaveStatus('¡Compartido con éxito!');
       } else {
@@ -163,7 +163,7 @@ export const VideoPreviewModal: React.FC<VideoPreviewProps> = ({
 
             <div className="flex items-center gap-1 text-[11px] text-slate-400">
               <FileCheck size={14} className="text-emerald-400" />
-              <span>Marco Sunrise 3.0 Integrado</span>
+              <span>Marco Campeonato GCF Integrado</span>
             </div>
           </div>
         </div>

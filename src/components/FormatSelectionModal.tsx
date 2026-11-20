@@ -28,12 +28,12 @@ export const FormatSelectionModal: React.FC<FormatSelectionProps> = ({
       <div className="relative z-10 flex flex-col items-center text-center mt-6">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-900/40 border border-blue-500/30 text-blue-300 text-xs font-semibold tracking-wider uppercase mb-4 shadow-sm">
           <Sparkles size={14} className="text-amber-400" />
-          Edición Oficial • Guardianes del Mar
+          Edición Oficial • Campeonato de Fútbol 2026
         </div>
 
         <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white flex items-center justify-center gap-2">
-          <span className="text-amber-400">SUNRISE</span>
-          <span className="text-white text-3xl sm:text-4xl font-extrabold bg-blue-700/60 px-3 py-0.5 rounded-xl border border-blue-400/40">3.0</span>
+          <span className="text-amber-400">CAMPEONATO</span>
+          <span className="text-white text-3xl sm:text-4xl font-extrabold bg-blue-700/60 px-3 py-0.5 rounded-xl border border-blue-400/40">GCF</span>
         </h1>
         <p className="text-xs sm:text-sm font-mono tracking-widest text-slate-400 uppercase mt-2">
           Cámara Profesional de Eventos

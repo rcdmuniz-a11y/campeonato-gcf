@@ -42,7 +42,7 @@ export const SwiftUIDeliverablesModal: React.FC<SwiftUIDeliverablesProps> = ({
     setIsZipping(true);
     try {
       const zip = new JSZip();
-      const rootFolder = zip.folder('SunriseCamera3.0_Xcode_Project');
+      const rootFolder = zip.folder('CampeonatoGCF_Xcode_Project');
 
       // Add all Swift code files and configs
       SWIFT_PROJECT_FILES.forEach((file) => {
@@ -50,7 +50,7 @@ export const SwiftUIDeliverablesModal: React.FC<SwiftUIDeliverablesProps> = ({
       });
 
       // Add Assets.xcassets Contents.json
-      const assetsFolder = rootFolder?.folder('SunriseCamera/Assets.xcassets');
+      const assetsFolder = rootFolder?.folder('CampeonatoGCFCamera/Assets.xcassets');
       assetsFolder?.file('Contents.json', JSON.stringify({
         info: { author: 'xcode', version: 1 }
       }, null, 2));
@@ -80,12 +80,12 @@ export const SwiftUIDeliverablesModal: React.FC<SwiftUIDeliverablesProps> = ({
       }
 
       // Add quick-start note
-      rootFolder?.file('LEEME_PRIMERO.txt', `PROYECTO SUNRISE CAMERA 3.0 - SWIFTUI + TESTFLIGHT
+      rootFolder?.file('LEEME_PRIMERO.txt', `PROYECTO CAMPEONATO GCF - SWIFTUI + TESTFLIGHT
 =====================================================
 Pasos rápidos:
 1. Abre Xcode en tu Mac (versión 15 o 16).
 2. Crea un nuevo proyecto: File > New > Project > iOS App (Interface: SwiftUI).
-3. Nómbralo 'SunriseCamera' y arrastra todos los archivos de esta carpeta al proyecto.
+3. Nómbralo 'CampeonatoGCFCamera' y arrastra todos los archivos de esta carpeta al proyecto.
 4. En Assets.xcassets crea dos Image Sets: 'Marco Vertical' y 'Marco Horizontal' y coloca los marcos PNG.
 5. Conecta tu iPhone por cable o selecciona 'Any iOS Device' > Product > Archive para subir a TestFlight.
 `);
@@ -94,7 +94,7 @@ Pasos rápidos:
       const content = await zip.generateAsync({ type: 'blob' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(content);
-      a.download = 'SunriseCamera3.0_SwiftUI_Project.zip';
+      a.download = 'CampeonatoGCF_SwiftUI_Project.zip';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -120,7 +120,7 @@ Pasos rápidos:
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base font-bold text-white">
-                  Sunrise Camera 3.0 — iOS & TestFlight
+                  Campeonato GCF — iOS & TestFlight
                 </h2>
                 <span className="px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300 border border-orange-500/40 text-[10px] font-mono font-bold">
                   iOS 16/17/18
@@ -189,7 +189,7 @@ Pasos rápidos:
                   Ruta de Despliegue Rápido
                 </span>
                 <h3 className="text-lg sm:text-xl font-black text-white">
-                  ¿Cómo instalar Sunrise Camera 3.0 en tu iPhone y en el de tu equipo?
+                  ¿Cómo instalar Campeonato GCF en tu iPhone y en el de tu equipo?
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
                   Tienes 2 caminos: probarlo en <strong>5 minutos</strong> conectando tu iPhone a tu Mac por cable, o publicarlo en <strong>TestFlight</strong> para enviar un enlace a todos los fotógrafos del evento.
@@ -256,7 +256,7 @@ Pasos rápidos:
                   <li>
                     Configura los campos:
                     <ul className="list-disc list-inside pl-4 mt-1 space-y-1 text-slate-400 font-mono text-xs">
-                      <li>Product Name: <span className="text-amber-300">SunriseCamera</span></li>
+                      <li>Product Name: <span className="text-amber-300">CampeonatoGCFCamera</span></li>
                       <li>Organization Identifier: <span className="text-amber-300">com.tuempresa</span> (o tu nombre)</li>
                       <li>Interface: <span className="text-amber-300">SwiftUI</span></li>
                       <li>Language: <span className="text-amber-300">Swift</span></li>
@@ -363,7 +363,7 @@ Pasos rápidos:
                     Inicia sesión en <a href="https://appstoreconnect.apple.com" target="_blank" rel="noreferrer" className="text-amber-300 underline font-semibold">appstoreconnect.apple.com</a> con tu cuenta de desarrollador.
                   </li>
                   <li>
-                    Haz clic en <strong>Apps</strong> y selecciona <strong>Sunrise Camera</strong>.
+                    Haz clic en <strong>Apps</strong> y selecciona <strong>Campeonato GCF</strong>.
                   </li>
                   <li>
                     Entra a la pestaña superior <strong>TestFlight</strong>. Verás la versión subida (por ejemplo, <em>Build 1.0 (1)</em>).
@@ -374,7 +374,7 @@ Pasos rápidos:
                   <li>
                     En la barra lateral izquierda bajo <strong>External Groups (Grupos externos)</strong>:
                     <div className="p-3 mt-1.5 bg-slate-950 rounded-xl border border-white/5 space-y-1">
-                      <p className="text-white font-bold">Crea el grupo &quot;Fotógrafos Sunrise 3.0&quot;:</p>
+                      <p className="text-white font-bold">Crea el grupo &quot;Fotógrafos Campeonato GCF&quot;:</p>
                       <p className="text-slate-300">
                         - Activa la opción <strong>&quot;Public Link&quot; (Enlace Público)</strong>.
                       </p>

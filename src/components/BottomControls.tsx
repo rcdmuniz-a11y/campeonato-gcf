@@ -145,7 +145,7 @@ export const BottomControls: React.FC<BottomControlsProps> = ({
               id="btn_shutter_capture"
               onClick={onCapture}
               disabled={isCapturing}
-              title="Tomar fotografía con marco Sunrise"
+              title="Tomar fotografía con marco Campeonato GCF"
               className="group relative flex items-center justify-center w-18 h-18 sm:w-20 sm:h-20 rounded-full border-4 border-white active:scale-95 transition-transform duration-150 focus:outline-hidden disabled:opacity-50 shadow-2xl"
             >
               <div

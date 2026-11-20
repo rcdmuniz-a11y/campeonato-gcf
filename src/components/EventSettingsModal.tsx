@@ -83,8 +83,8 @@ export const EventSettingsModal: React.FC<EventSettingsProps> = ({
               id="input_file_prefix"
               type="text"
               value={settings.filePrefix}
-              onChange={(e) => onUpdateSettings({ filePrefix: e.target.value.toUpperCase() })}
-              placeholder="SUNRISE_"
+              onChange={(e) => onUpdateSettings({ filePrefix: e.target.value })}
+              placeholder="campeonato-gcf-"
               className="w-full py-2 px-3 rounded-xl bg-slate-950 border border-white/20 text-white font-mono text-sm focus:border-amber-400 focus:outline-hidden"
             />
           </div>

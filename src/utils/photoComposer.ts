@@ -53,7 +53,7 @@ export async function saveOrSharePhoto(photo: CapturedPhoto): Promise<{ savedDir
       await navigator.share({
         files: [file],
         title: photo.filename,
-        text: 'Fotografía oficial Sunrise 3.0 Guardianes del Mar'
+        text: 'Fotografía oficial Campeonato de Fútbol 2026 - Campeonato GCF'
       });
       return { savedDirectly: true, message: 'Compartido / Guardado en Fotos' };
     } catch (err: unknown) {

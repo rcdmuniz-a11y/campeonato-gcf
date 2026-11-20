@@ -149,7 +149,7 @@ export class VideoRecorderService {
 
         const id = `vid_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
         const counterStr = String(options.counter).padStart(3, '0');
-        const filename = `${options.filePrefix || 'SUNRISE_'}VID_${counterStr}.${extension}`;
+        const filename = `${options.filePrefix || 'campeonato-gcf-'}video-${counterStr}.${extension}`;
 
         const captured: CapturedVideo = {
           id,

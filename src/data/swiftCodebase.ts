@@ -2,15 +2,15 @@ import { SwiftFileItem } from '../types/camera';
 
 export const SWIFT_PROJECT_FILES: SwiftFileItem[] = [
   {
-    filename: 'SunriseCameraApp.swift',
-    path: 'SunriseCamera/SunriseCameraApp.swift',
+    filename: 'CampeonatoGCFCameraApp.swift',
+    path: 'CampeonatoGCFCamera/CampeonatoGCFCameraApp.swift',
     category: 'App',
     description: 'Punto de entrada principal de la aplicación en SwiftUI. Inicializa servicios y bloqueo de orientación.',
     content: `import SwiftUI
 import AVFoundation
 
 @main
-struct SunriseCameraApp: App {
+struct CampeonatoGCFCameraApp: App {
     @StateObject private var cameraVM = CameraViewModel()
     @StateObject private var eventManager = EventModeManager.shared
     
@@ -33,7 +33,7 @@ struct SunriseCameraApp: App {
   },
   {
     filename: 'ContentView.swift',
-    path: 'SunriseCamera/Views/ContentView.swift',
+    path: 'CampeonatoGCFCamera/Views/ContentView.swift',
     category: 'Views',
     description: 'Vista raíz con selector de formato inicial (Vertical / Horizontal) y transición a la cámara activa.',
     content: `import SwiftUI
@@ -72,9 +72,9 @@ struct ContentView: View {
   },
   {
     filename: 'FormatSelectionView.swift',
-    path: 'SunriseCamera/Views/FormatSelectionView.swift',
+    path: 'CampeonatoGCFCamera/Views/FormatSelectionView.swift',
     category: 'Views',
-    description: 'Pantalla inicial exigida por el requerimiento: SUNRISE CAMERA 3.0 con selección de formato Vertical u Horizontal.',
+    description: 'Pantalla inicial de Campeonato GCF con selección de formato Vertical u Horizontal.',
     content: `import SwiftUI
 
 enum CameraFormat: String, CaseIterable, Identifiable {
@@ -100,19 +100,19 @@ struct FormatSelectionView: View {
             
             // Logotipo y Cabecera Oficial
             VStack(spacing: 12) {
-                Text("SUNRISE")
-                    .font(.system(size: 48, weight: .black, design: .rounded))
-                    .foregroundColor(.orange)
-                    + Text(" 3.0")
+                Text("CAMPEONATO")
+                    .font(.system(size: 40, weight: .black, design: .rounded))
+                    .foregroundColor(.blue)
+                    + Text(" GCF")
                     .font(.system(size: 32, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                 
-                Text("CAMERA CORPORATIVA")
+                Text("CÁMARA OFICIAL")
                     .font(.system(size: 14, weight: .bold, design: .monospaced))
                     .foregroundColor(.gray)
                     .tracking(4)
                 
-                Text("#GUARDIANES DEL MAR")
+                Text("CAMPEONATO DE FÚTBOL 2026")
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundColor(Color.blue.opacity(0.9))
                     .padding(.horizontal, 14)
@@ -192,7 +192,7 @@ struct FormatSelectionView: View {
   },
   {
     filename: 'CameraViewModel.swift',
-    path: 'SunriseCamera/ViewModels/CameraViewModel.swift',
+    path: 'CampeonatoGCFCamera/ViewModels/CameraViewModel.swift',
     category: 'ViewModels',
     description: 'Gestor de AVFoundation: sesión de captura, lentes (0.5x, 1x, 2x, 3x), flash, exposición y Core Image.',
     content: `import Foundation
@@ -377,7 +377,7 @@ extension CameraViewModel: AVCapturePhotoCaptureDelegate {
   },
   {
     filename: 'CIFilterEngine.swift',
-    path: 'SunriseCamera/Processing/CIFilterEngine.swift',
+    path: 'CampeonatoGCFCamera/Processing/CIFilterEngine.swift',
     category: 'Processing',
     description: 'Motor de filtros Core Image en tiempo real (Original, Vivo, Cálido, Frío, B&W, Contraste alto).',
     content: `import Foundation
@@ -457,9 +457,9 @@ final class CIFilterEngine {
   },
   {
     filename: 'PhotoComposer.swift',
-    path: 'SunriseCamera/Processing/PhotoComposer.swift',
+    path: 'CampeonatoGCFCamera/Processing/PhotoComposer.swift',
     category: 'Processing',
-    description: 'Composición final en máxima resolución: Foto + Filtro Core Image + Marco PNG transparente -> Guardar en Fotos como SUNRISE_XXX.jpg.',
+    description: 'Composición final en máxima resolución: Foto + Filtro Core Image + Marco PNG transparente -> Guardar en Fotos como campeonato-gcf-XXX.jpg.',
     content: `import Foundation
 import UIKit
 import CoreImage
@@ -477,7 +477,7 @@ final class PhotoComposer {
         DispatchQueue.global(qos: .userInitiated).async {
             guard let ciInput = CIImage(image: rawImage) else {
                 DispatchQueue.main.async {
-                    completion(.failure(NSError(domain: "SunriseCamera", code: -1, userInfo: [NSLocalizedDescriptionKey: "Imagen inválida"])))
+                    completion(.failure(NSError(domain: "CampeonatoGCFCamera", code: -1, userInfo: [NSLocalizedDescriptionKey: "Imagen inválida"])))
                 }
                 return
             }
@@ -512,9 +512,10 @@ final class PhotoComposer {
             }
             UIGraphicsEndImageContext()
             
-            // 4. Nombre de archivo secuencial: SUNRISE_001.jpg
+            // 4. Nombre de archivo secuencial: campeonato-gcf-001.jpg
             let nextIndex = EventModeManager.shared.incrementCounter()
-            let filename = String(format: "SUNRISE_%03d.jpg", nextIndex)
+            let prefix = EventModeManager.shared.filePrefix
+            let filename = String(format: "%@%03d.jpg", prefix, nextIndex)
             
             // 5. Guardar en Fotos del iPhone sin compresión destructiva
             self.saveToPhotosLibrary(image: finalImage, filename: filename) { success in
@@ -522,7 +523,7 @@ final class PhotoComposer {
                     if success {
                         completion(.success(filename))
                     } else {
-                        completion(.failure(NSError(domain: "SunriseCamera", code: -2, userInfo: [NSLocalizedDescriptionKey: "Fallo al guardar en Fotos"])))
+                        completion(.failure(NSError(domain: "CampeonatoGCFCamera", code: -2, userInfo: [NSLocalizedDescriptionKey: "Fallo al guardar en Fotos"])))
                     }
                 }
             }
@@ -563,7 +564,7 @@ final class PhotoComposer {
   },
   {
     filename: 'FrameFileManager.swift',
-    path: 'SunriseCamera/Services/FrameFileManager.swift',
+    path: 'CampeonatoGCFCamera/Services/FrameFileManager.swift',
     category: 'Services',
     description: 'Gestor dinámico de marcos: permite reemplazar "Marco Vertical.png" y "Marco Horizontal.png" sin tocar código.',
     content: `import Foundation
@@ -610,7 +611,7 @@ final class FrameFileManager {
   },
   {
     filename: 'EventModeManager.swift',
-    path: 'SunriseCamera/Services/EventModeManager.swift',
+    path: 'CampeonatoGCFCamera/Services/EventModeManager.swift',
     category: 'Services',
     description: 'Modo Evento: contador secuencial, prefijo de archivos, bloqueo PIN para anfitriones del evento.',
     content: `import Foundation
@@ -619,11 +620,11 @@ import SwiftUI
 final class EventModeManager: ObservableObject {
     static let shared = EventModeManager()
     
-    @AppStorage("sunrise_photo_counter") var photoCounter: Int = 1
-    @AppStorage("sunrise_file_prefix") var filePrefix: String = "SUNRISE_"
-    @AppStorage("sunrise_admin_pin") var adminPin: String = ""
-    @AppStorage("sunrise_kiosk_locked") var isKioskLocked: Bool = false
-    @AppStorage("sunrise_quick_format") var quickLaunchFormatRaw: String = ""
+    @AppStorage("campeonato_gcf_photo_counter") var photoCounter: Int = 1
+    @AppStorage("campeonato_gcf_file_prefix") var filePrefix: String = "campeonato-gcf-"
+    @AppStorage("campeonato_gcf_admin_pin") var adminPin: String = ""
+    @AppStorage("campeonato_gcf_kiosk_locked") var isKioskLocked: Bool = false
+    @AppStorage("campeonato_gcf_quick_format") var quickLaunchFormatRaw: String = ""
     
     var quickLaunchFormat: CameraFormat? {
         get { CameraFormat(rawValue: quickLaunchFormatRaw) }
@@ -643,7 +644,7 @@ final class EventModeManager: ObservableObject {
   },
   {
     filename: 'Info.plist',
-    path: 'SunriseCamera/Info.plist',
+    path: 'CampeonatoGCFCamera/Info.plist',
     category: 'Config',
     description: 'Permisos de privacidad requeridos por Apple para TestFlight y la App Store.',
     content: `<?xml version="1.0" encoding="UTF-8"?>
@@ -651,17 +652,17 @@ final class EventModeManager: ObservableObject {
 <plist version="1.0">
 <dict>
     <key>CFBundleDisplayName</key>
-    <string>Sunrise Camera</string>
+    <string>Campeonato GCF</string>
     <key>CFBundleIdentifier</key>
-    <string>com.sunrise.camera</string>
+    <string>com.campeonatogcf.camera</string>
     <key>CFBundleShortVersionString</key>
-    <string>3.0.0</string>
+    <string>1.0.0</string>
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>NSCameraUsageDescription</key>
-    <string>Sunrise Camera necesita acceso a la cámara para tomar fotografías del evento con marcos y filtros en tiempo real.</string>
+    <string>Campeonato GCF necesita acceso a la cámara para tomar fotografías del evento con marcos y filtros en tiempo real.</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Sunrise Camera guarda automáticamente las fotografías del evento Sunrise 3.0 en tu fototeca con alta calidad.</string>
+    <string>Campeonato GCF guarda automáticamente las fotografías del Campeonato de Fútbol 2026 en tu fototeca con alta calidad.</string>
     <key>UIRequiresFullScreen</key>
     <true/>
     <key>UIStatusBarHidden</key>
@@ -680,7 +681,7 @@ final class EventModeManager: ObservableObject {
     path: 'README_TESTFLIGHT.md',
     category: 'Documentation',
     description: 'Guía paso a paso para compilar en Xcode, subir a TestFlight y distribuir a los fotógrafos del evento.',
-    content: `# Sunrise Camera 3.0 - Guía de Compilación e Instalación TestFlight
+    content: `# Campeonato GCF - Guía de Compilación e Instalación TestFlight
 
 ## 1. Requisitos
 - Mac con macOS Sonoma o posterior.
@@ -689,11 +690,11 @@ final class EventModeManager: ObservableObject {
 
 ## 2. Abrir el proyecto en Xcode
 1. Abre Xcode y selecciona "Create New Xcode Project" -> "iOS" -> "App".
-2. Nombre del producto: **SunriseCamera**.
+2. Nombre del producto: **CampeonatoGCFCamera**.
 3. Organization Identifier: **com.tuempresa**.
 4. Interface: **SwiftUI**, Language: **Swift**.
 5. Copia los archivos del módulo en la estructura mostrada:
-   - \`SunriseCameraApp.swift\`
+   - \`CampeonatoGCFCameraApp.swift\`
    - Carpeta \`Views/\` (\`ContentView.swift\`, \`FormatSelectionView.swift\`, etc.)
    - Carpeta \`ViewModels/\` (\`CameraViewModel.swift\`)
    - Carpeta \`Processing/\` (\`CIFilterEngine.swift\`, \`PhotoComposer.swift\`)
@@ -719,7 +720,7 @@ El módulo \`FrameFileManager.swift\` permite reemplazar los marcos sin necesida
 5. Selecciona la opción automática de firma (*Automatically manage signing*).
 6. Una vez subido a App Store Connect:
    - Entra a [appstoreconnect.apple.com](https://appstoreconnect.apple.com).
-   - Ve a **Apps > Sunrise Camera > TestFlight**.
+   - Ve a **Apps > Campeonato GCF > TestFlight**.
    - En **Grupos de Pruebas Internas**, añade los correos de tu equipo.
    - En **Pruebas Externas**, genera un enlace público para los fotógrafos del evento.
    - Los participantes instalarán la app con un solo toque desde la app TestFlight de su iPhone.`

@@ -113,7 +113,7 @@ export const FrameManagerModal: React.FC<FrameManagerProps> = ({
                   </span>
                 ) : (
                   <span className="px-2 py-0.5 rounded-md bg-blue-950 text-blue-300 border border-blue-500/40 text-[10px] font-semibold">
-                    Oficial Sunrise 3.0
+                    Oficial Campeonato GCF
                   </span>
                 )}
               </div>
@@ -188,12 +188,12 @@ export const FrameManagerModal: React.FC<FrameManagerProps> = ({
                   </span>
                 ) : (
                   <span className="px-2 py-0.5 rounded-md bg-blue-950 text-blue-300 border border-blue-500/40 text-[10px] font-semibold">
-                    Oficial Sunrise 3.0
+                    Oficial Campeonato GCF
                   </span>
                 )}
               </div>
               <p className="text-xs text-slate-400">
-                Proporción recomendada: 1920 × 1080 px. PNG transparente con banner inferior de Guardianes del Mar.
+                Proporción recomendada: 1920 × 1080 px. PNG transparente con marco oficial del Campeonato de Fútbol 2026.
               </p>
 
               {/* Action buttons */}

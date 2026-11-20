@@ -1,6 +1,6 @@
 {
-  "name": "Sunrise Camera 3.0",
-  "description": "Cámara profesional de eventos con marcos personalizados Sunrise 3.0, filtros en tiempo real, exportación en alta calidad y suite completa de código iOS SwiftUI.",
+  "name": "Campeonato GCF",
+  "description": "Cámara oficial de eventos con marcos personalizados del Campeonato de Fútbol 2026 (Campeonato GCF) y exportación en alta calidad.",
   "requestFramePermissions": ["camera", "microphone"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

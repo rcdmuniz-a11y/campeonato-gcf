@@ -28,13 +28,13 @@ import {
 import confetti from 'canvas-confetti';
 
 const STORAGE_KEYS = {
-  SETTINGS: 'sunrise_camera_settings_v3',
+  SETTINGS: 'campeonato_gcf_camera_settings_v1',
 };
 
 const DEFAULT_SETTINGS: EventSettings = {
-  eventName: 'Sunrise 3.0',
+  eventName: 'Campeonato GCF',
   photoCounter: 1,
-  filePrefix: 'SUNRISE_',
+  filePrefix: 'campeonato-gcf-',
   isKioskLocked: false,
   adminPin: '',
   quickLaunchFormat: 'auto',
@@ -289,7 +289,7 @@ export default function App() {
 
   return (
     <main
-      id="sunrise_camera_main_screen"
+      id="campeonato_gcf_camera_main_screen"
       className="fixed inset-0 w-full overflow-hidden bg-black select-none"
       style={{
         height: '100dvh',
